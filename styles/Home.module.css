@@ -1,5 +1,4 @@
 .container {
-  padding: 0 2rem;
   background-color: #bae8e8;
 }
 
@@ -22,6 +21,10 @@
   align-items: center;
 }
 
+.copyright {
+  font-family: sans-serif;
+}
+
 .footer a {
   display: flex;
   justify-content: center;
@@ -32,12 +35,6 @@
 .title a {
   color: #0070f3;
   text-decoration: none;
-}
-
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
 }
 
 .title {
