@@ -55,7 +55,7 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
-        <label className={styles.copyright}>©</label>2022 yurika
+        <span className={styles.copyright}>© </span>2022 yurika
       </footer>
     </div>
   )
