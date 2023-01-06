@@ -13,7 +13,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <header className={styles.title}>
-          喫茶　ひとやすみ
+          ひとやすみ
         </header>
 
         <div className={styles.grid}>
