@@ -1,12 +1,16 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import localFont from '@next/font/local'
+import { Kiwi_Maru } from '@next/font/google'
 
-const font = localFont({ src : './font/hanazome.ttf'})
+const kiwiMaru = Kiwi_Maru({
+  weight: '500',
+  display: 'swap',
+  subsets: ['japanese']
+})
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div className={ font.className }>
+    <div className={ kiwiMaru.className }>
       <Component {...pageProps}/>
     </div>
   )
