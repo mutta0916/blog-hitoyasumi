@@ -50,7 +50,7 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
-        <span className={styles.copyright}>© </span>2022 yurika
+        © 2022 yurika
       </footer>
     </div>
   )
