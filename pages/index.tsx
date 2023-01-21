@@ -1,57 +1,38 @@
-import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import { Client } from "@notionhq/client"
+import { InferGetStaticPropsType } from 'next';
 
-export default function Home() {
+const notion = new Client({ auth: process.env.NOTION_KEY })
+const databaseId = process.env.NOTION_DATABASE_ID || ""
+
+type Props = InferGetStaticPropsType<typeof getStaticProps>
+
+export default function Home({ results }: Props) {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>喫茶 ひとやすみ</title>
-        <meta name="description" content="エンジニアの雑多ブログです。仕事で詰まったところのメモが多めです。" />
-        {/* <link rel="icon" href="/favicon.ico" /> */}
-      </Head>
-
-      <main className={styles.main}>
-        <header className={styles.title}>
-          ひとやすみ
-        </header>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
+    <div className={styles.grid}>
+      {results.map((result) => {
+        const title = result.properties.title.title[0].plain_text
+        const url = `/pages?blockId=${result.id}`
+        return (
           <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
+            href={ url }
             className={styles.card}
           >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
+          <h2>{ title }</h2>
           </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        © 2022 yurika
-      </footer>
+        )
+      })}
     </div>
   )
+}
+
+export async function getStaticProps() {
+  const response = await notion.databases.query({
+    database_id: databaseId
+  })
+  return {
+    props: {
+      results: response.results
+    }
+  }
 }
