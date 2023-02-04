@@ -7,14 +7,12 @@ export default function Page({ results }) {
   return (
     <div className={styles.page}>
       {
-        results.map((result) => {
+        results.map((result, index) => {
         const text = result.paragraph.rich_text.length > 0 ? result.paragraph.rich_text[0].plain_text : ""
         return (
-          <div>
-            <div>{ text }</div>
-          </div>
+          <div key={index}>{ text }</div>
         )
-      })}
+        })}
     </div>
   )
 }
