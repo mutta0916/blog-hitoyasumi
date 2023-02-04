@@ -10,13 +10,14 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>
 export default function Home({ results }: Props) {
   return (
     <div className={styles.grid}>
-      {results.map((result) => {
+      {results.map((result, index) => {
         const title = result.properties.title.title[0].plain_text
         const url = `/page?blockId=${result.id}`
         return (
           <a
             href={ url }
             className={styles.card}
+            key={ index }
           >
           <h2>{ title }</h2>
           </a>

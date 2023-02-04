@@ -10,7 +10,7 @@ export default function Page({ results }) {
         results.map((result, index) => {
         const text = result.paragraph.rich_text.length > 0 ? result.paragraph.rich_text[0].plain_text : ""
         return (
-          <div key={index}>{ text }</div>
+          <div key={ index }>{ text }</div>
         )
         })}
     </div>
