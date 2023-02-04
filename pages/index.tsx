@@ -12,7 +12,7 @@ export default function Home({ results }: Props) {
     <div className={styles.grid}>
       {results.map((result) => {
         const title = result.properties.title.title[0].plain_text
-        const url = `/pages?blockId=${result.id}`
+        const url = `/page?blockId=${result.id}`
         return (
           <a
             href={ url }

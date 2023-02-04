@@ -20,9 +20,11 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <div className={ styles.container }>
         <main className={ styles.main }>
-          <header className={ styles.title }>
-            ひとやすみ
-          </header>
+          <a href={ "/" }>
+            <header className={ styles.title }>
+              ひとやすみ
+            </header>
+          </a>
           <Component { ...pageProps }/>
         </main>
         <footer className={ styles.footer }>
