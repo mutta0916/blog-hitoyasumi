@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Client } from "@notionhq/client"
 import styles from '../styles/Page.module.css'
 

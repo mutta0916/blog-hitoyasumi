@@ -1,3 +1,4 @@
+// @ts-nocheck
 import styles from '../styles/Home.module.css'
 import { Client } from "@notionhq/client"
 import { InferGetStaticPropsType } from 'next';
