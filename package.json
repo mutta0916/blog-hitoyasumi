@@ -6,19 +6,32 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier . --check",
+    "format:fix": "prettier . --write",
+    "format:lint": "npm run format:fix && npm run lint"
   },
   "dependencies": {
-    "@next/font": "^13.0.7",
-    "@notionhq/client": "^2.2.3",
-    "@types/node": "18.11.9",
-    "@types/react": "18.0.25",
-    "@types/react-dom": "18.0.8",
-    "eslint": "8.26.0",
-    "eslint-config-next": "^13.0.7",
-    "next": "^13.0.7",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "typescript": "4.8.4"
+    "@notionhq/client": "^2.2.11",
+    "@types/node": "20.5.1",
+    "@types/react": "18.2.20",
+    "@types/react-dom": "18.2.7",
+    "antd": "^5.8.4",
+    "eslint": "8.47.0",
+    "eslint-config-next": "13.4.19",
+    "next": "13.4.19",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "sass": "^1.66.1",
+    "typescript": "5.1.6"
+  },
+  "engines": {
+    "node": "18.17.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.4.0",
+    "@typescript-eslint/parser": "^6.4.0",
+    "eslint-config-prettier": "^9.0.0",
+    "prettier": "^3.0.2"
   }
 }

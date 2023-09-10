@@ -1,0 +1,13 @@
+# dotfile
+.env*
+
+# markdown
+*.md
+
+# next.js
+/.next/
+/out/
+
+package-lock.json
+package.json
+config.yml
