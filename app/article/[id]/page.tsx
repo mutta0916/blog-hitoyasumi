@@ -1,7 +1,17 @@
 import React from 'react';
+import Article from './Article';
+import { getArticles, getArticle } from 'BlogActions';
 
-const Page: React.FC = async () => {
-  return <h1>記事の詳細です</h1>;
+export async function generateStaticParams() {
+  const result = await getArticles();
+  return result.map((article) => ({
+    id: article.id,
+  }));
+}
+
+const Page = async ({ params }: { params: any }) => {
+  const article = await getArticle(params.id);
+  return <Article article={article} />;
 };
 
 export default Page;

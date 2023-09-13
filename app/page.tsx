@@ -1,24 +1,15 @@
 import React from 'react';
 import ArticleList from 'components/ArticleList';
-import { Client } from '@notionhq/client';
-import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints';
-const notion = new Client({ auth: process.env.NOTION_API_KEY });
-const databaseId = process.env.NOTION_DATABASE_ID;
+import BaseLayout from 'components/BaseLayout';
+import { getArticles } from 'BlogActions';
 
-async function getArticles() {
-  if (!databaseId) {
-    return;
-  }
-  const response: QueryDatabaseResponse = await notion.databases.query({
-    database_id: databaseId,
-  });
-
-  return response.results;
-}
-
-const Page: React.FC = async () => {
+const Page = async () => {
   const articles = await getArticles();
-  return <ArticleList articles={articles} />;
+  return (
+    <BaseLayout>
+      <ArticleList articles={articles} />
+    </BaseLayout>
+  );
 };
 
 export default Page;
