@@ -41,5 +41,18 @@ body {
   padding: 1.5em 3em;
   border-radius: 10px;
   min-height: 100vh;
-  width: 70%;
+}
+
+.article-image-container {
+  text-align: center;
+  span {
+    color: #626262;
+  }
+}
+
+.article-image {
+  object-fit: contain;
+  position: relative !important;
+  width: 370px !important;
+  height: 170px !important;
 }

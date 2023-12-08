@@ -1,6 +1,6 @@
 import React from 'react';
 import Article from './Article';
-import { getArticles, getArticle } from 'BlogActions';
+import { getArticles, getArticle, getArticleProperty } from 'BlogActions';
 
 export async function generateStaticParams() {
   const result = await getArticles();
@@ -11,7 +11,8 @@ export async function generateStaticParams() {
 
 const Page = async ({ params }: { params: any }) => {
   const article = await getArticle(params.id);
-  return <Article article={article} />;
+  const articleProperty = await getArticleProperty(params.id);
+  return <Article article={article} articleProperty={articleProperty} />;
 };
 
 export default Page;
