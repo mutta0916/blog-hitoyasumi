@@ -2,6 +2,7 @@ import { Client } from '@notionhq/client';
 import type {
   QueryDatabaseResponse,
   ListBlockChildrenResponse,
+  GetPageResponse,
 } from '@notionhq/client/build/src/api-endpoints';
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 const databaseId = process.env.NOTION_DATABASE_ID;
@@ -27,4 +28,11 @@ export async function getArticle(id: string) {
     page_size: 100,
   });
   return response.results;
+}
+
+export async function getArticleProperty(id: string) {
+  const response: GetPageResponse = await notion.pages.retrieve({
+    page_id: id,
+  });
+  return response;
 }
