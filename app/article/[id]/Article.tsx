@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { isFullBlock } from '@notionhq/client';
 import BaseLayout from 'components/BaseLayout';
 import type {
@@ -48,7 +48,7 @@ const Article: React.FC<ArticleProps> = ({ article, articleProperty }) => {
     }
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     const highlight = async () => {
       await Prism.highlightAll();
     };
