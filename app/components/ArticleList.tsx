@@ -47,7 +47,11 @@ const ArticleList: React.FC<ArticleListProps> = ({ articles }) => {
         const month = updateDate.getMonth() + 1;
         const day = updateDate.getDate();
         return (
-          <List.Item key={item.id} extra={<Image width={272} alt="logo" src={defaultImage} />}>
+          <List.Item
+            key={item.id}
+            extra={<Image width={272} alt="logo" src={defaultImage} />}
+            className="article-list-item"
+          >
             <List.Item.Meta
               title={<Link href={`/article/${item.id}`}>{title}</Link>}
               description={
