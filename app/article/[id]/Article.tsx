@@ -22,13 +22,21 @@ interface ArticleProps {
 
 function breakLinesWithBr(textArray: RichTextItemResponse[]) {
   let text = '';
+  let href = '';
   if (Array.isArray(textArray) && textArray.length > 0) {
     text = textArray[0].plain_text;
+    href = textArray[0].href || '';
   }
   const texts = text.split('\n').map((item) => {
     return (
       <>
-        {item}
+        {href ? (
+          <a href={href} target="_blank" rel="noopener noreferrer">
+            {item}
+          </a>
+        ) : (
+          item
+        )}
         <br />
       </>
     );
