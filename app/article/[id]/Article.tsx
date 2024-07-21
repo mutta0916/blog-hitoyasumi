@@ -22,7 +22,7 @@ interface ArticleProps {
 
 function breakLinesWithBr(textArray: RichTextItemResponse[]) {
   let text = '';
-  if (Array.isArray(textArray)) {
+  if (Array.isArray(textArray) && textArray.length > 0) {
     text = textArray[0].plain_text;
   }
   const texts = text.split('\n').map((item) => {
