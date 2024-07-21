@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, Fragment } from 'react';
 import { isFullBlock } from '@notionhq/client';
 import BaseLayout from 'components/BaseLayout';
 import type {
@@ -22,15 +22,22 @@ interface ArticleProps {
 
 function breakLinesWithBr(textArray: RichTextItemResponse[]) {
   let text = '';
+  let href = '';
   if (Array.isArray(textArray) && textArray.length > 0) {
     text = textArray[0].plain_text;
+    href = textArray[0].href || '';
   }
-  const texts = text.split('\n').map((item) => {
+  const texts = text.split('\n').map((item, index) => {
     return (
-      <>
-        {item}
-        <br />
-      </>
+      <Fragment key={index}>
+        {href ? (
+          <a href={href} target="_blank" rel="noopener noreferrer">
+            {item}
+          </a>
+        ) : (
+          item
+        )}
+      </Fragment>
     );
   });
   return texts;
